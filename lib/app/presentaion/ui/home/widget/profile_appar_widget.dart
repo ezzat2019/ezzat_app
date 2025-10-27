@@ -1,6 +1,5 @@
 import 'package:ezzat_app/app/core/utilts/color_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileApparWidget extends StatelessWidget {
   const ProfileApparWidget({super.key});
@@ -10,16 +9,16 @@ class ProfileApparWidget extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: 32.w,
-          height: 32.w,
+          width: 32,
+          height: 32,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(100.r),
+            borderRadius: BorderRadius.circular(100),
             color: Colors.white,
           ),
         ),
-        12.horizontalSpace,
-        Icon(Icons.keyboard_arrow_down, color: Colors.white, size: 25.r),
-        6.horizontalSpace,
+    SizedBox(width: 12,),
+        Icon(Icons.keyboard_arrow_down, color: Colors.white, size: 25),
+    SizedBox(width: 6,),
         Text(
           "John Doe",
           style: TextStyle(fontSize: 14, color: ColorManager.fontColor),

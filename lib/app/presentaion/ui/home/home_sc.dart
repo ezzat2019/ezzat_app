@@ -7,7 +7,6 @@ import 'package:ezzat_app/app/presentaion/ui/home/widget/item_card_widget.dart';
 import 'package:ezzat_app/app/presentaion/ui/home/widget/nav_item_widget.dart';
 import 'package:ezzat_app/app/presentaion/ui/home/widget/profile_appar_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
@@ -26,14 +25,14 @@ class HomeSc extends StatelessWidget {
         drawer: isMobile ? _mobileDrawer(context) : null,
         body: Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: isMobile ? 16.w : 80.w,
-            vertical: isMobile ? 16.h : 30.h,
+            horizontal: isMobile ? 16 : 80,
+            vertical: isMobile ? 16 : 30,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const HorizntalHomeWidget(),
-              SizedBox(height: 25.h),
+              SizedBox(height: 25),
               Expanded(
                 child: Consumer<HomeProvider>(
                   builder: (context, provider, _) {
@@ -52,14 +51,14 @@ class HomeSc extends StatelessWidget {
                             ? 3
                             : 4;
                         return GridView.builder(
-                          padding: EdgeInsets.only(top: 25.h),
+                          padding: EdgeInsets.only(top: 25),
                           itemCount: model.trips?.length ?? 0,
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: crossAxisCount,
-                                crossAxisSpacing: 16.w,
-                                mainAxisSpacing: 20.h,
-                                mainAxisExtent: 366,
+                                crossAxisSpacing: 16,
+                                mainAxisSpacing: 20,
+                                mainAxisExtent: 385,
                               ),
                           itemBuilder: (context, index) {
                             final item = model.trips![index];
@@ -83,15 +82,15 @@ class HomeSc extends StatelessWidget {
       backgroundColor: Colors.black,
       elevation: 0,
       title: Padding(
-        padding: EdgeInsets.only(top: 10.h, left: 70.w, right: 70.w),
+        padding: EdgeInsets.only(top: 10, left: 70, right: 70),
         child: Column(
           children: [
             Row(
               children: [
                 SvgPicture.asset(
                   "${PathManager.SVG_PATH}logoipsum-332 1.svg",
-                  width: 82.w,
-                  height: 40.h,
+                  width: 82,
+                  height: 40,
                 ),
                 const Spacer(),
                 const NavItemWidget(title: 'Items', active: true),
@@ -99,27 +98,28 @@ class HomeSc extends StatelessWidget {
                 const NavItemWidget(title: 'Info', active: false),
                 const NavItemWidget(title: 'Tasks', active: false),
                 const NavItemWidget(title: 'Analytics', active: false),
-                Container(width: 1.w, height: 22.w, color: ColorManager.border),
-                16.w.horizontalSpace,
+                Container(width: 1, height: 22, color: ColorManager.border),
+                SizedBox(width: 16,),
+
                 SvgPicture.asset(
                   "${PathManager.SVG_PATH}setting_bar.svg",
-                  width: 24.w,
-                  height: 24.w,
+                  width: 24,
+                  height: 24,
                 ),
-                24.w.horizontalSpace,
+                SizedBox(width: 16,),
                 SvgPicture.asset(
                   "${PathManager.SVG_PATH}notification.svg",
-                  width: 24.w,
-                  height: 24.w,
+                  width: 24,
+                  height: 24,
                 ),
-                16.w.horizontalSpace,
-                Container(width: 1.w, height: 22.w, color: ColorManager.border),
-                36.w.horizontalSpace,
+                SizedBox(width: 16,),
+                Container(width: 1, height: 22, color: ColorManager.border),
+                SizedBox(width: 36,),
                 const ProfileApparWidget(),
               ],
             ),
-            18.verticalSpace,
-            Container(width: 1.sw, height: 1, color: ColorManager.border),
+            SizedBox(height: 18,),
+            Container(width: double.infinity, height: 1, color: ColorManager.border),
           ],
         ),
       ),
@@ -132,8 +132,8 @@ class HomeSc extends StatelessWidget {
       elevation: 0,
       title: SvgPicture.asset(
         "${PathManager.SVG_PATH}logoipsum-332 1.svg",
-        width: 60.w,
-        height: 30.h,
+        width: 60,
+        height: 30,
       ),
       centerTitle: true,
     );
@@ -144,13 +144,14 @@ class HomeSc extends StatelessWidget {
       backgroundColor: Colors.black,
       child: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(16.w),
+          padding: EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const ProfileApparWidget(),
               const Divider(color: ColorManager.border),
-              10.verticalSpace,
+            SizedBox(height: 10,),
+
               const DrawerItemWidget(title: "Items", active: true),
               const DrawerItemWidget(title: "Pricing", active: false),
               const DrawerItemWidget(title: "Info", active: false),

@@ -2,7 +2,6 @@ import 'package:ezzat_app/app/core/utilts/color_manager.dart';
 import 'package:ezzat_app/app/core/utilts/path_manger.dart';
 import 'package:ezzat_app/app/core/widgets/my_button_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HorizntalHomeWidget extends StatelessWidget {
@@ -24,27 +23,27 @@ class HorizntalHomeWidget extends StatelessWidget {
         const Spacer(),
         if (!isMobile) ...[
           Container(
-            width: 48.w,
-            height: 48.w,
+            width: 48,
+            height: 48,
             decoration: BoxDecoration(
               color: ColorManager.black2,
-              borderRadius: BorderRadius.circular(100.r),
+              borderRadius: BorderRadius.circular(100),
             ),
-            padding: EdgeInsets.all(12.w),
+            padding: EdgeInsets.all(12),
             child: SvgPicture.asset("${PathManager.SVG_PATH}sliders.svg"),
           ),
           Container(
-            width: 1.w,
-            height: 46.w,
+            width: 1,
+            height: 46,
             color: ColorManager.border,
-            margin: EdgeInsets.symmetric(horizontal: 12.w),
+            margin: EdgeInsets.symmetric(horizontal: 12),
           ),
         ],
         MyBtnWidget(
           onTap: () {},
           name: "Add a New Item",
           backgroundColor: ColorManager.SECONDARY,
-          borderRadius: BorderRadius.circular(100.r),
+          borderRadius: BorderRadius.circular(100),
           elevation: 0,
           textColor: Colors.black,
           iconPrefix: SvgPicture.asset(
@@ -52,8 +51,8 @@ class HorizntalHomeWidget extends StatelessWidget {
             height: 16,
           ),
           padding: EdgeInsets.symmetric(
-            horizontal: isMobile ? 16.w : 24.w,
-            vertical: isMobile ? 12.h : 24.h,
+            horizontal: isMobile ? 16 : 24,
+            vertical: isMobile ? 12 : 24,
           ),
         ),
       ],

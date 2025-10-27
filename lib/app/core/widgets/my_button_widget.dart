@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../utilts/color_manager.dart';
 
@@ -33,9 +32,9 @@ class MyBtnWidget extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: backgroundColor ?? ColorManager.PRIMARY,
         elevation: elevation,
-        padding: padding ?? EdgeInsets.symmetric(vertical: 13.w),
+        padding: padding ?? EdgeInsets.symmetric(vertical: 13),
         shape: RoundedRectangleBorder(
-          borderRadius: borderRadius ?? BorderRadiusGeometry.circular(6.r),
+          borderRadius: borderRadius ?? BorderRadiusGeometry.circular(6),
           side: borderColor != null
               ? BorderSide(color: borderColor!)
               : BorderSide.none,
@@ -44,7 +43,7 @@ class MyBtnWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (iconPrefix != null) ...[iconPrefix!, 8.horizontalSpace],
+          if (iconPrefix != null) ...[iconPrefix!, SizedBox(width: 8,)],
           Text(
             name,
             style: TextStyle(

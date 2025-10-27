@@ -3,7 +3,6 @@ import 'package:ezzat_app/app/core/utilts/path_manger.dart';
 import 'package:ezzat_app/app/core/widgets/my_network_image.dart';
 import 'package:ezzat_app/app/data/model/trips_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ItemCard extends StatelessWidget {
@@ -17,14 +16,14 @@ class ItemCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: ColorManager.black2,
-        borderRadius: BorderRadius.circular(15.r),
+        borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
         children: [
           _imageStackWidget(item, borderColor),
-          SizedBox(height: 18.h),
+          SizedBox(height: 18),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15.w),
+            padding: EdgeInsets.symmetric(horizontal: 15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -32,11 +31,11 @@ class ItemCard extends StatelessWidget {
                   item.title ?? "",
                   style: const TextStyle(color: Colors.white, fontSize: 18),
                 ),
-                6.verticalSpace,
+                SizedBox(height: 8,),
                 Row(
                   children: [
                     SvgPicture.asset("${PathManager.SVG_PATH}calendar.svg"),
-                    4.horizontalSpace,
+                    SizedBox(width: 4,),
                     Text(
                       '${item.dates?.start ?? ""} - ${item.dates?.end ?? ""}',
                       style: const TextStyle(
@@ -46,7 +45,7 @@ class ItemCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                24.verticalSpace,
+                SizedBox(height: 24,),
                 Row(
                   children: [
                     _buildParticipants(item.participants ?? []),
@@ -71,37 +70,37 @@ class ItemCard extends StatelessWidget {
   Widget _buildParticipants(List<Participants> participants) {
     final displayCount = participants.length.clamp(0, 3);
     return SizedBox(
-      width: (displayCount * 18.w) + 28.w,
-      height: 28.w,
+      width: (displayCount * 18) + 28,
+      height: 28,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
           for (int i = 0; i < displayCount; i++)
             Positioned(
-              left: i * 18.w,
+              left: i * 18,
               child: MyNetworkImage(
                 imgUrl: participants[i].avatarUrl ?? "",
-                width: 28.w,
-                height: 28.w,
+                width: 28,
+                height: 28,
                 borderRadius: 100,
               ),
             ),
           if (participants.length > 3)
             Positioned(
-              left: displayCount * 18.w,
+              left: displayCount * 18,
               child: Container(
-                width: 28.w,
-                height: 28.w,
+                width: 28,
+                height: 28,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: ColorManager.border,
-                  borderRadius: BorderRadius.circular(100.r),
+                  borderRadius: BorderRadius.circular(100),
                 ),
                 child: Text(
                   '+${participants.length - 3}',
                   style: TextStyle(
                     color: ColorManager.SECONDARY,
-                    fontSize: 12.sp,
+                    fontSize: 12,
                   ),
                 ),
               ),
@@ -116,12 +115,12 @@ class ItemCard extends StatelessWidget {
       children: [
         MyNetworkImage(
           imgUrl: item.coverImage ?? "",
-          width: 1.sw,
+          width:double.infinity,
           height: 250,
           borderRadius: 15,
         ),
         Container(
-          width: 1.sw,
+          width:double.infinity,
           height: 250,
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -135,9 +134,9 @@ class ItemCard extends StatelessWidget {
           bottom: 0,
           left: 15,
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 8.h),
+            padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(100.r),
+              borderRadius: BorderRadius.circular(100),
               color: Colors.transparent,
               border: Border.all(color: borderColor),
             ),

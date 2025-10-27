@@ -1,6 +1,5 @@
 import 'package:ezzat_app/app/core/utilts/color_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NavItemWidget extends StatelessWidget {
   final String title;
@@ -11,7 +10,7 @@ class NavItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 32.w),
+      padding: EdgeInsets.only(right: 32),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -23,10 +22,10 @@ class NavItemWidget extends StatelessWidget {
               fontWeight: FontWeight.w400,
             ),
           ),
-          20.verticalSpace,
+        SizedBox(height: 20,),
           if (active)
             Container(
-              height: 2.w,
+              height: 2,
               width: title.length * 8,
               color: ColorManager.SECONDARY,
             ),

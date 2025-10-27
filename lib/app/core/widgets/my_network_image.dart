@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyNetworkImage extends StatelessWidget {
   final String imgUrl;
@@ -22,7 +21,7 @@ class MyNetworkImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(
-        borderRadius == null ? 0 : borderRadius!.r,
+        borderRadius == null ? 0 : borderRadius!,
       ),
       child: CachedNetworkImage(
         imageUrl: imgUrl,
@@ -31,13 +30,13 @@ class MyNetworkImage extends StatelessWidget {
         fit: BoxFit.fill,
         filterQuality: FilterQuality.high,
         placeholder: (context, url) => Container(
-          width: width ?? 1.sw,
-          height: height ?? 1.sh,
+          width: width ?? double.infinity,
+          height: height ??double.infinity,
           color: Colors.grey.shade200,
         ),
         errorWidget: (context, url, error) => Container(
-          width: width ?? 1.sw,
-          height: height ?? 1.sh,
+          width: width ?? double.infinity,
+          height: height ??double.infinity,
           color: Colors.grey.shade400,
         ),
       ),

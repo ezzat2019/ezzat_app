@@ -59,7 +59,7 @@ class HomeSc extends StatelessWidget {
                                 crossAxisCount: crossAxisCount,
                                 crossAxisSpacing: 16.w,
                                 mainAxisSpacing: 20.h,
-                                mainAxisExtent: 380,
+                                mainAxisExtent: 366,
                               ),
                           itemBuilder: (context, index) {
                             final item = model.trips![index];

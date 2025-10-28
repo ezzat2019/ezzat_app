@@ -31,6 +31,9 @@ class HomeSc extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+
+              Container(width: double.infinity, height: 2, color: ColorManager.border),
+              SizedBox(height: 16),
               const HorizntalHomeWidget(),
               SizedBox(height: 25),
               Expanded(
@@ -82,10 +85,11 @@ class HomeSc extends StatelessWidget {
       backgroundColor: Colors.black,
       elevation: 0,
       title: Padding(
-        padding: EdgeInsets.only(top: 10, left: 70, right: 70),
+        padding: EdgeInsets.only(top: 30, left: 70, right: 70),
         child: Column(
           children: [
             Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SvgPicture.asset(
                   "${PathManager.SVG_PATH}logoipsum-332 1.svg",
@@ -93,38 +97,64 @@ class HomeSc extends StatelessWidget {
                   height: 40,
                 ),
                 const Spacer(),
-                const NavItemWidget(title: 'Items', active: true),
-                const NavItemWidget(title: 'Pricing', active: false),
-                const NavItemWidget(title: 'Info', active: false),
-                const NavItemWidget(title: 'Tasks', active: false),
-                const NavItemWidget(title: 'Analytics', active: false),
-                Container(width: 1, height: 22, color: ColorManager.border),
-                SizedBox(width: 16,),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: Selector<HomeProvider, int>(
+                    selector: (_, provider) => provider.selectedIndex,
+                    builder: (context, selectedIndex, _) {
+                      final titles = [
+                        'Items',
+                        'Pricing',
+                        'Info',
+                        'Tasks',
+                        'Analytics'
+                      ];
 
+                      return Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: List.generate(
+                          titles.length,
+                              (index) => NavItemWidget(
+                            title: titles[index],
+                            active: selectedIndex == index,
+                            onTap: () {
+                              context
+                                  .read<HomeProvider>()
+                                  .setSelectedIndex(index);
+                            },
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                Container(width: 2, height: 22, color: ColorManager.border),
+                SizedBox(width: 16),
                 SvgPicture.asset(
                   "${PathManager.SVG_PATH}setting_bar.svg",
                   width: 24,
                   height: 24,
                 ),
-                SizedBox(width: 16,),
+                SizedBox(width: 16),
                 SvgPicture.asset(
                   "${PathManager.SVG_PATH}notification.svg",
                   width: 24,
                   height: 24,
                 ),
-                SizedBox(width: 16,),
-                Container(width: 1, height: 22, color: ColorManager.border),
-                SizedBox(width: 36,),
+                SizedBox(width: 16),
+                Container(width: 2, height: 22, color: ColorManager.border),
+                SizedBox(width: 36),
                 const ProfileApparWidget(),
               ],
             ),
-            SizedBox(height: 18,),
-            Container(width: double.infinity, height: 1, color: ColorManager.border),
+            SizedBox(height: 18),
+
           ],
         ),
       ),
     );
   }
+
 
   PreferredSizeWidget _mobileAppBar(BuildContext context) {
     return AppBar(

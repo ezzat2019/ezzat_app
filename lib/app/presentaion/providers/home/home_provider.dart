@@ -6,7 +6,17 @@ import '../../../data/model/trips_model.dart';
 
 class HomeProvider extends ChangeNotifier {
   final HomeUseCase _homeUseCase = GetItManager.getIt.get<HomeUseCase>();
+
   TripsModel? tripsModel;
+  int _selectedIndex = 0;
+
+  int get selectedIndex => _selectedIndex;
+
+  void setSelectedIndex(int index) {
+    _selectedIndex = index;
+    notifyListeners();
+  }
+
   Future<TripsModel> loadTrips() async {
     var res = await _homeUseCase.loadTrips();
     tripsModel = res;

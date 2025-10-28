@@ -33,7 +33,7 @@ class HorizntalHomeWidget extends StatelessWidget {
             child: SvgPicture.asset("${PathManager.SVG_PATH}sliders.svg"),
           ),
           Container(
-            width: 1,
+            width: 2,
             height: 46,
             color: ColorManager.border,
             margin: EdgeInsets.symmetric(horizontal: 12),

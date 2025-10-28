@@ -4,33 +4,43 @@ import 'package:flutter/material.dart';
 class NavItemWidget extends StatelessWidget {
   final String title;
   final bool active;
+  final VoidCallback? onTap;
 
-  const NavItemWidget({super.key, required this.title, required this.active});
+  const NavItemWidget({
+    super.key,
+    required this.title,
+    required this.active,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(right: 32),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            title,
-            style: TextStyle(
-              color: !active ? ColorManager.gray : Colors.white,
-              fontSize: 14,
-              fontWeight: FontWeight.w400,
+    return Column(
+
+      children: [
+        GestureDetector(
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: Text(
+              title,
+              style: TextStyle(
+                color: active ? Colors.white : Colors.grey,
+                fontWeight: active ? FontWeight.bold : FontWeight.normal,
+                fontSize: 16,
+              ),
             ),
           ),
-        SizedBox(height: 20,),
-          if (active)
-            Container(
-              height: 2,
-              width: title.length * 8,
-              color: ColorManager.SECONDARY,
-            ),
-        ],
-      ),
+        ),
+        SizedBox(height: 8,),
+        if (active)
+          Container(
+            height: 2,
+            width: title.length * 8,
+            color: ColorManager.SECONDARY,
+          ),
+      ],
     );
   }
 }
+
